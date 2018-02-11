@@ -1,21 +1,3 @@
-==== Copyright ====
-
-Copyright (C) 2014  HW42 <hw42@ipsumj.de>
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along
-with this program; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
 ==== About ====
 
 Since Gnupg 2.1.0 the private gpg keys are handled by the gpg-agent. This
@@ -38,34 +20,66 @@ This implies that the response from the server is _not_ santizied.
 
 === Debian packages ===
 
+```
 cd /path/to/split-gpg2-source
 dpkg-buildpackage -us -uc
+```
 
 === RPM packages ===
 
+```
 cd /path/to/split-gpg2-source
 rpmbuild -ba rpm_spec/split-gpg2.spec
 rpmbuild -ba rpm_spec/split-gpg2-dom0.spec
-
+```
 
 ==== Installation ====
 
 Install the the debian or the rpm on your vm-template.
 
 Install the dom0-rpm in dom0. (Or just create a proper
-/etc/qubes-rpc/policy/qubes.Gpg2).
+`/etc/qubes-rpc/policy/qubes.Gpg2`).
 
-Create ~user/.split-gpg2-rc in the server and in the client domain.
-See /usr/share/split-gpg2/examples/split-gpg2-rc.example for an example and the
+Create `~user/.split-gpg2-rc` in the server and in the client domain.
+See [`/usr/share/split-gpg2/examples/split-gpg2-rc.example`](./split-gpg2-rc.example) for an example and the
 available options.
 
-Enable the split-gpg2-client service in the client domain either via the gui or
-via 'qvm-service gpg-client-vm enable split-gpg2-client'. Restart the client domain.
+Enable the `split-gpg2-client` service in the client domain either via the gui or
+via command line:
+
+```
+# in R3.x
+qvm-service gpg-client-vm enable split-gpg2-client # in R3.x
+# in R4.x
+qvm-sevice --enable gpg-client split-gpg2-client
+```
+
+Restart the client domain.
 
 You should now be able the run gpg2 in the client domain.
 
-For keys for which you have the secret part you need to import the **public**
+***NOTICE: For keys for which you have the secret part you need to import the *public*
 part in both the client and the server domain. The secret part should only be
-imported in the server domain.
+imported in the server domain.***
 
 Other public keys should only be imported in the client domain.
+
+==== Copyright ====
+
+```
+Copyright (C) 2014  HW42 <hw42@ipsumj.de>
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+```
