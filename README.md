@@ -1,31 +1,32 @@
-==== About ====
+# About
 
-Since Gnupg 2.1.0 the private gpg keys are handled by the gpg-agent. This
-allows to split the gpg2 (cmdline tool - handles public keys, etc.) and the
-gpg-agent which handles the private keys. Purpose of this project is to split
-gpg2 and gpg-agent between two Qubes domains. Since normally the gpg-agent is run
-locally no filtering is provided. So to make this a meaningful security feature
-the main function is the filtering of the commands from the less trusted domain
-running gpg2. The rest are some script to "tunnel" the gpg-agent-commands
-through Qubes RPC.
+Since GnuPG 2.1.0 the private GPG keys are handled by the `gpg-agent`. This
+allows to split the `gpg2` (command line tool - handles public keys, etc.) and the
+`gpg-agent` which handles the private keys.
 
-The server is the domain which runs the (real) gpg-agent.
-The client is the domain which which access the server via Qubes RPC.
+Purpose of this project is to split `gpg2` and `gpg-agent` between two Qubes domains.
+Since normally the gpg-agent is run locally no filtering is provided. So to make this
+a meaningful security feature the main function is the filtering of the commands from
+the less trusted domain running `gpg2`. The rest are some script to "tunnel" the
+`gpg-agent`-commands through Qubes RPC.
+
+The **server** is the domain which runs the (real) `gpg-agent`.  
+The **client** is the domain which which access the server via Qubes RPC.
 
 The server domain is generally considered more trustfull then the client domain.
-This implies that the response from the server is _not_ santizied.
+This implies that the response from the server is _not_ santized.
 
 
-==== Building ====
+## Building
 
-=== Debian packages ===
+### Debian packages
 
 ```
 cd /path/to/split-gpg2-source
 dpkg-buildpackage -us -uc
 ```
 
-=== RPM packages ===
+### RPM packages
 
 ```
 cd /path/to/split-gpg2-source
@@ -33,7 +34,7 @@ rpmbuild -ba rpm_spec/split-gpg2.spec
 rpmbuild -ba rpm_spec/split-gpg2-dom0.spec
 ```
 
-==== Installation ====
+## Installation
 
 Install the the debian or the rpm on your vm-template.
 
@@ -64,7 +65,9 @@ imported in the server domain.***
 
 Other public keys should only be imported in the client domain.
 
-==== Copyright ====
+## Copyright
+
+See [`LICENSE`](./LICENSE)
 
 ```
 Copyright (C) 2014  HW42 <hw42@ipsumj.de>
