@@ -21,7 +21,8 @@ This implies that the response from the server is _not_ santized.
 
 ### Debian packages
 
-The following dependencies need to be met to build Debian packages: `debhelper`, `dh-systemd`, `dpkg-dev`.
+The following dependencies need to be met to build Debian packages:  
+`debhelper`, `dh-systemd`, `dpkg-dev`.
  
 ```
 cd /path/to/split-gpg2-source
@@ -33,7 +34,8 @@ parent directory.
 
 ### RPM packages
 
-You will need the following packages to build RPM packages: `rpm`.
+You will need the following packages to build RPM packages:  
+`rpm` (on Debian-based distros) or `rpm-build` (on Fedora and alike).
 
 ```
 cd /path/to/split-gpg2-source
