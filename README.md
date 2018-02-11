@@ -21,18 +21,28 @@ This implies that the response from the server is _not_ santized.
 
 ### Debian packages
 
+The following dependancies need to be met to build Debian packages: `debhelper`, `dh-systemd`, `dpkg-dev`.
+ 
 ```
 cd /path/to/split-gpg2-source
 dpkg-buildpackage -us -uc
 ```
 
+Built packages along with some additional files will be saved in `split-gpg2` source's
+parent directory.
+
 ### RPM packages
+
+You will need the following packages to build RPM packages: `rpm`.
 
 ```
 cd /path/to/split-gpg2-source
 rpmbuild -ba rpm_spec/split-gpg2.spec
 rpmbuild -ba rpm_spec/split-gpg2-dom0.spec
 ```
+
+Built binary packages will be saved in `~/rpmbuild/RPMS/`; source packages will be
+saved in `~/rpmbuild/SRPMS/` .
 
 ## Installation
 
@@ -59,7 +69,7 @@ Restart the client domain.
 
 You should now be able the run gpg2 in the client domain.
 
-***NOTICE: For keys for which you have the secret part you need to import the *public*
+***NOTICE: For keys for which you have the _secret_ part you need to import the _public_
 part in both the client and the server domain. The secret part should only be
 imported in the server domain.***
 
