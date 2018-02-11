@@ -21,7 +21,7 @@ This implies that the response from the server is _not_ santized.
 
 ### Debian packages
 
-The following dependancies need to be met to build Debian packages: `debhelper`, `dh-systemd`, `dpkg-dev`.
+The following dependencies need to be met to build Debian packages: `debhelper`, `dh-systemd`, `dpkg-dev`.
  
 ```
 cd /path/to/split-gpg2-source
