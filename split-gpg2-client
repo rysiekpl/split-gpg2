@@ -3,12 +3,7 @@
 agent_socket=`gpgconf --list-dirs | grep '^agent-socket:' | cut -d ':' -f 2`
 
 if [ -S "$agent_socket" ]; then
-    agent_pid=`lsof -F p "$agent_socket" 2>/dev/null | grep '^p' | cut -b 2-`
-
-    if [ -n $agent_pid ]; then
-        kill $agent_pid
-    fi
-
+    lsof -F p "$agent_socket" 2>/dev/null | grep '^p' | cut -b 2- | xargs -r kill
     rm -f "$agent_socket"
 fi
 
